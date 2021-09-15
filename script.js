@@ -1,6 +1,27 @@
 
-var chosenColor = document.getElementById('RGBuser').value
-console.log(chosenColor)
+function startup() { //fires on startup to grab elements
+    var colorPicker = document.getElementById('RGBuser');
+    var chosenColorHex = colorPicker.value;
+    colorPicker.addEventListener("input", updateFirst, false);
+    colorPicker.addEventListener("change", updateAll, false);
+    colorPicker.select();
+    console.log(chosenColorHex);
+}
+
+function updateFirst(event) { //called when user drags around cursor in color picker
+    chosenColorHex = event.target.value;
+    console.log(chosenColorHex);
+}
+
+function updateAll(event) { //called when window is closed
+    chosenColorHex = event.target.value;
+    hexR = hexToRgb(chosenColorHex).r;
+    hexG = hexToRgb(chosenColorHex).g;
+    hexB = hexToRgb(chosenColorHex).b;
+
+    console.log(hexR, hexG, hexB);
+
+}
 
 function hexToRgb(hex) {
 var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -11,8 +32,8 @@ return result ? {
     } : null;
 }
 
-var hexR = hexToRgb(chosenColor).r
-var hexB = hexToRgb(chosenColor).b 
-var hexG = hexToRgb(chosenColor).g
 
-console.log(hexR, hexB, hexG)
+startup();
+
+
+
