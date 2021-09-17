@@ -30,27 +30,32 @@ return result ? {
 
 function RGBtoMaxwellHueConverter(chosenColorHex) {
 
-    hexR = hexToRgb(chosenColorHex).r;
-    hexG = hexToRgb(chosenColorHex).g;
-    hexB = hexToRgb(chosenColorHex).b;
+    redValue = hexToRgb(chosenColorHex).r;
+    greenValue = hexToRgb(chosenColorHex).g;
+    blueValue = hexToRgb(chosenColorHex).b;
+    console.log(redValue, greenValue, blueValue);
 
-    console.log(hexR, hexG, hexB);
-    var rho = (1/(hexR + hexG + hexB)) * hexR;
-    var gamma = (1/(hexR + hexG + hexB)) * hexG;
-    var beta = (1/(hexR + hexG + hexB)) * hexB;
+        var rho = (1/(redValue + greenValue + blueValue)) * redValue;
+        var gamma = (1/(redValue + greenValue + blueValue)) * greenValue;
+        var beta = (1/(redValue + greenValue + blueValue)) * blueValue;
+        
+        var lumes = Math.max(redValue, greenValue, blueValue) / 255;
     
-    var lumes = Math.max(hexR, hexG, hexB) / 255;
+        console.log(lumes);
+        console.log(rho, gamma, beta);
+    
+        var roundedRho = rho.toFixed(3);
+        var roundedGamma = gamma.toFixed(3);
+        var roundedBeta = beta.toFixed(3);
+        var roundedLumes = lumes.toFixed(3);
+    
+        var rhoGammaBetaArray = [roundedRho, roundedGamma, roundedBeta, roundedLumes];
 
-    console.log(lumes);
-    console.log(rho, gamma, beta);
-
-    var roundedRho = rho.toFixed(3);
-    var roundedGamma = gamma.toFixed(3);
-    var roundedBeta = beta.toFixed(3);
-    var roundedLumes = lumes.toFixed(3)
-
-    var rhoGammaBetaArray = [roundedRho, roundedGamma, roundedBeta, roundedLumes];
-    document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues is:  " + rhoGammaBetaArray;
+        if (isNaN(rho) || isNaN(gamma) || isNaN(beta)) {
+            var blackRhoGammaBeta = [0,0,0,0];
+            document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues is: " + blackRhoGammaBeta;
+        } else {document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues is:  " + rhoGammaBetaArray;}
+        
 
 
 }
