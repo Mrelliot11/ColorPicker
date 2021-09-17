@@ -6,6 +6,7 @@ function startup() { //fires on startup to grab elements
     colorPicker.addEventListener("change", updateAll, false);
     colorPicker.select();
     console.log(chosenColorHex);
+    
 }
 
 function updateFirst(event) { //called when user drags around cursor in color picker
@@ -15,12 +16,7 @@ function updateFirst(event) { //called when user drags around cursor in color pi
 
 function updateAll(event) { //called when window is closed
     chosenColorHex = event.target.value;
-    hexR = hexToRgb(chosenColorHex).r;
-    hexG = hexToRgb(chosenColorHex).g;
-    hexB = hexToRgb(chosenColorHex).b;
-
-    console.log(hexR, hexG, hexB);
-
+    RGBtoMaxwellHueConverter(chosenColorHex);
 }
 
 function hexToRgb(hex) {
@@ -32,6 +28,25 @@ return result ? {
     } : null;
 }
 
+function RGBtoMaxwellHueConverter(chosenColorHex) {
+
+    hexR = hexToRgb(chosenColorHex).r;
+    hexG = hexToRgb(chosenColorHex).g;
+    hexB = hexToRgb(chosenColorHex).b;
+    console.log(hexR, hexG, hexB);
+    var rho = (1/(hexR + hexG + hexB)) * hexR;
+    var gamma = (1/(hexR + hexG + hexB)) * hexG;
+    var beta = (1/(hexR + hexG + hexB)) * hexB;
+    
+    var lumes = Math.max(hexR, hexG, hexB) / 255;
+
+    console.log(lumes)
+    console.log(rho, gamma, beta);
+
+
+
+
+}
 
 startup();
 
