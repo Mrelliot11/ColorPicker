@@ -33,6 +33,7 @@ function RGBtoMaxwellHueConverter(chosenColorHex) {
     hexR = hexToRgb(chosenColorHex).r;
     hexG = hexToRgb(chosenColorHex).g;
     hexB = hexToRgb(chosenColorHex).b;
+
     console.log(hexR, hexG, hexB);
     var rho = (1/(hexR + hexG + hexB)) * hexR;
     var gamma = (1/(hexR + hexG + hexB)) * hexG;
@@ -43,7 +44,13 @@ function RGBtoMaxwellHueConverter(chosenColorHex) {
     console.log(lumes);
     console.log(rho, gamma, beta);
 
+    var roundedRho = rho.toFixed(3);
+    var roundedGamma = gamma.toFixed(3);
+    var roundedBeta = beta.toFixed(3);
+    var roundedLumes = lumes.toFixed(3)
 
+    var rhoGammaBetaArray = [roundedRho, roundedGamma, roundedBeta, roundedLumes];
+    document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues is:  " + rhoGammaBetaArray;
 
 
 }
