@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Picker</title>
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
-    <label for="convertedColor">Hello! Welcome to our color picker app. Here you will be able to convert between RGB and Barycentric Maxwell hues. Please enter a color below: </label><br>
+    <p id="colorPickerLabelText">Hello! Welcome to our color picker app. Here you will be able to convert between RGB and Barycentric Maxwell hues. Please enter a color below:
+    </p>
     <br><br>
-    <input type="color" id="RGBuser" name="RGB", value="#e65332"></input> 
+    
+    <div id="rgbPicker">
+        <input type="color" id="RGBuser" name="RGB", value="#e65332"></input>
+    </div>
+
     <p id="resultText"></p>
 </body>
 <script src="script.js"></script>
