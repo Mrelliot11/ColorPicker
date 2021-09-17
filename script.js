@@ -40,7 +40,7 @@ function RGBtoMaxwellHueConverter(chosenColorHex) {
     
     var lumes = Math.max(hexR, hexG, hexB) / 255;
 
-    console.log(lumes)
+    console.log(lumes);
     console.log(rho, gamma, beta);
 
 
