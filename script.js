@@ -53,8 +53,8 @@ function RGBtoMaxwellHueConverter(chosenColorHex) {
 
         if (isNaN(rho) || isNaN(gamma) || isNaN(beta)) {
             var blackRhoGammaBeta = [0,0,0,0];
-            document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues is: " + blackRhoGammaBeta;
-        } else {document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues is:  " + rhoGammaBetaArray;}
+            document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues (ρ,ɣ,β, L) is: (" + blackRhoGammaBeta + ")";
+        } else {document.getElementById('resultText').innerHTML = "The color you picked, represented in Barycentric Maxwell Hues (ρ,ɣ,β, L) is:  (" + rhoGammaBetaArray + ")";}
         
 
 
